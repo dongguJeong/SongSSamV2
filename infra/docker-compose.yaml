@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  api:
+    build: ../apps/api
+    command: pnpm start:dev
+    ports:
+      - "3000:3000"
+    environment:
+      - INFER_URL=http://infer:8000
+
+  web:
+    build: ../apps/web
+    command: pnpm dev
+    ports:
+      - "5173:5173"
+
+  infer:
+    build: ../apps/infer
+    command: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+    ports:
+      - "8000:8000"
