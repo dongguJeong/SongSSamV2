@@ -2,7 +2,7 @@
 
 - [x] rvc 레포지토리 클론해서 RunPod에 올리기
 - [] fast-api 에 연동하기
-- [] nestjs 로 백엔드 api 만들기
+- [] nestjs 로 백엔드 api 만들기 -> 로그인, 회원가입 완료. fast-api로 요청 하는 api 미완료
 - [] react로 ui 만들기
 - [] api 연동하기
 - [] Redis, websocket 으로 진행 사항 표시하기

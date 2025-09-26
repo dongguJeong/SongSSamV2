@@ -13,7 +13,7 @@ export class AuthService {
   ) {}
 
   async signUp(dto: SignupDto) {
-    const hashed: string = await bcrypt.hash(dto.password, 10);
+    const hashed = await bcrypt.hash(dto.password, 10);
     return this.userService.create(dto.username, hashed);
   }
 

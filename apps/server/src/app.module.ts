@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -11,8 +12,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       password: 'root', // MySQL 비밀번호
       database: 'songssam', // 연결할 DB 이름
       autoLoadEntities: true, // Entity 자동 로드
-      synchronize: true, // 개발용: 자동으로 테이블 생성/업데이트
     }),
+    AuthModule,
   ],
   controllers: [],
   providers: [],
