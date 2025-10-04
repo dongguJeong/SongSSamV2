@@ -1,14 +1,41 @@
 version: "3.9"
 services:
+  api:
+    build: ../apps/api
+    container_name: api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_USER=app
+      - DB_PASS=app
+      - DB_NAME=songssam
+
+  web:
+    build: ../apps/web
+    container_name: web
+    ports:
+      - "8080:80"
+
   db:
     image: mysql:8.0
+    container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: songssam
       MYSQL_USER: app
       MYSQL_PASSWORD: app
-    ports: ["3306:3306"]
+    volumes:
+      - /media/donggu/2e28166d-a0fd-47e4-a3f1-a0ca204bd763:/var/lib/mysql # HDD에 DB 저장
+    ports:
+      - "3306:3306"
 
   redis:
     image: redis:7
-    ports: ["6379:6379"]
+    container_name: redis
+    ports:
+      - "6379:6379"
